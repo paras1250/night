@@ -143,16 +143,16 @@ const LinkedListLevel = ({ onBack }) => {
 
           <AnimatePresence>
             {isComplete && (
-              <>
+              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="absolute inset-0 z-40">
                 <SuccessConfetti />
-                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="absolute inset-0 flex items-center justify-center bg-black/70 z-40 rounded-2xl">
+                <div className="w-full h-full flex items-center justify-center bg-black/70 rounded-2xl">
                   <div className="text-center p-8">
                     <div className="text-7xl mb-4 animate-bounce">🏆</div>
                     <h2 className="text-4xl font-extrabold mb-4 text-glow">List Legend!</h2>
                     <button onClick={reset} className="px-8 py-3 bg-blue-500 rounded-xl font-bold hover:bg-blue-400 transition-colors shadow-lg">🔄 Play Again</button>
                   </div>
-                </motion.div>
-              </>
+                </div>
+              </motion.div>
             )}
           </AnimatePresence>
 
@@ -165,7 +165,7 @@ const LinkedListLevel = ({ onBack }) => {
             <div className="flex items-center gap-0">
               <AnimatePresence mode='popLayout'>
                 {nodes.map((node, index) => (
-                  <div key={node.id} className="flex items-center gap-0">
+                  <motion.div key={node.id} className="flex items-center gap-0" layout>
                     <motion.div 
                       layout
                       initial={{ scale: 0, opacity: 0, x: -50 }}
@@ -190,7 +190,7 @@ const LinkedListLevel = ({ onBack }) => {
                          <div className="absolute right-0 top-1/2 -translate-y-1/2 border-t-8 border-b-8 border-l-8 border-t-transparent border-b-transparent border-l-blue-800" />
                       </motion.div>
                     )}
-                  </div>
+                  </motion.div>
                 ))}
               </AnimatePresence>
               {nodes.length === 0 && <div className="text-gray-500 italic text-lg text-center w-full">List is empty (NULL)</div>}
@@ -214,10 +214,10 @@ const LinkedListLevel = ({ onBack }) => {
                 <div className={`bg-black/50 border-2 rounded-2xl p-4 shadow-lg transition-all ${showError ? 'border-red-500 animate-shake' : 'border-blue-800/50'}`}>
                   <h3 className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-3 border-b border-gray-800 pb-2 flex justify-between">
                     <span>Tutorial Challenge</span>
-                    {nextOp?.op !== 'delete' && <span className="text-blue-400">Value Required</span>}
+                    {nextOp && nextOp.op !== 'delete' && <span className="text-blue-400">Value Required</span>}
                   </h3>
                   <div className="flex flex-col gap-2">
-                    {nextOp?.op !== 'delete' && (
+                    {nextOp && nextOp.op !== 'delete' && (
                        <input 
                         type="number" 
                         value={challengeValue} 

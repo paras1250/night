@@ -190,16 +190,16 @@ const BinaryTreeLevel = ({ onBack }) => {
         <div className="flex-1 min-h-[500px] flex flex-col bg-gradient-to-b from-green-900/40 to-black/80 border border-green-800 rounded-2xl shadow-2xl relative overflow-hidden">
           <AnimatePresence>
             {isComplete && (
-              <>
+              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="absolute inset-0 z-40">
                 <SuccessConfetti />
-                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="absolute inset-0 flex items-center justify-center bg-black/70 z-40 rounded-2xl">
+                <div className="w-full h-full flex items-center justify-center bg-black/70 rounded-2xl">
                   <div className="text-center p-8">
                     <div className="text-7xl mb-4 animate-bounce">🏆</div>
                     <h2 className="text-4xl font-extrabold mb-4 text-glow font-mono">Tree Master!</h2>
                     <button onClick={reset} className="px-8 py-3 bg-green-500 rounded-xl font-bold hover:bg-green-400 transition-colors">🔄 Try Again</button>
                   </div>
-                </motion.div>
-              </>
+                </div>
+              </motion.div>
             )}
           </AnimatePresence>
 

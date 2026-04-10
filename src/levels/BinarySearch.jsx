@@ -37,7 +37,7 @@ const BinarySearchLevel = ({ onBack }) => {
   const [challengeValue, setChallengeValue] = useState('');
   const [showError, setShowError] = useState(false);
   const [isAutoPlaying, setIsAutoPlaying] = useState(false);
-  const [mode, setMode] = useState('interactive'); 
+  const [mode, setMode] = useState('interactive');
   const autoRef = useRef(null);
 
   const resetGame = () => {
@@ -74,7 +74,7 @@ const BinarySearchLevel = ({ onBack }) => {
     playClick();
     setStepIdx(nextIdx);
     setChallengeValue('');
-    
+
     if (s.value === s.target) {
       playSuccess();
       setBirdHint(`🎊 Found ${s.target}!`);
@@ -92,7 +92,7 @@ const BinarySearchLevel = ({ onBack }) => {
 
 
   const isOver = status === 'won' || status === 'not_found';
-  
+
   useEffect(() => {
     let timer;
     if (isAutoPlaying && !isOver) {
@@ -188,10 +188,10 @@ const BinarySearchLevel = ({ onBack }) => {
                   <span>Search Challenge</span>
                   <span className="text-green-400">Identify Mid Value</span>
                 </h3>
-                
+
                 {!isOver && (
-                  <input 
-                    type="number" 
+                  <input
+                    type="number"
                     value={challengeValue}
                     onChange={(e) => setChallengeValue(e.target.value)}
                     placeholder="Enter value at FOX 🦊"
@@ -200,16 +200,16 @@ const BinarySearchLevel = ({ onBack }) => {
                 )}
 
                 <div className="flex gap-2">
-                  <button 
-                    onClick={() => setIsAutoPlaying(!isAutoPlaying)} 
-                    disabled={isOver} 
+                  <button
+                    onClick={() => setIsAutoPlaying(!isAutoPlaying)}
+                    disabled={isOver}
                     className={`flex-1 py-3 rounded-xl font-bold text-sm shadow-lg transition-all border-b-4 ${isAutoPlaying ? 'bg-red-600 border-red-800 text-white' : 'bg-jungle-leaf border-jungle-deep text-white'}`}
                   >
                     {isAutoPlaying ? '⏹ Stop' : '🚀 Auto Play'}
                   </button>
-                  <button 
-                    onClick={() => playStep(false)} 
-                    disabled={isOver || isAutoPlaying} 
+                  <button
+                    onClick={() => playStep(false)}
+                    disabled={isOver || isAutoPlaying}
                     className={`flex-1 py-3 rounded-xl font-bold text-sm shadow-lg border-b-4 ${isOver || isAutoPlaying ? 'bg-gray-800 border-gray-900 text-gray-600' : 'bg-gradient-to-r from-green-600 to-emerald-500 text-white border-green-800'}`}
                   >
                     Confirm Jump

@@ -208,12 +208,17 @@ const StackLevel = ({ onBack }) => {
           {/* Win Overlay */}
           <AnimatePresence>
             {isComplete && (
-              <>
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="absolute inset-0 z-40"
+              >
                 <SuccessConfetti />
                 <motion.div
-                  initial={{ opacity: 0, scale: 0.5 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  className="absolute inset-0 flex items-center justify-center bg-black/70 z-40 rounded-2xl"
+                  initial={{ scale: 0.5 }}
+                  animate={{ scale: 1 }}
+                  className="w-full h-full flex items-center justify-center bg-black/70 rounded-2xl"
                 >
                   <div className="text-center p-8">
                     <div className="text-8xl mb-4 animate-bounce">🏆</div>
@@ -224,7 +229,7 @@ const StackLevel = ({ onBack }) => {
                     </button>
                   </div>
                 </motion.div>
-              </>
+              </motion.div>
             )}
           </AnimatePresence>
 
