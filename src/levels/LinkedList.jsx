@@ -165,7 +165,7 @@ const LinkedListLevel = ({ onBack }) => {
             <div className="flex items-center gap-0">
               <AnimatePresence mode='popLayout'>
                 {nodes.map((node, index) => (
-                  <React.Fragment key={node.id}>
+                  <div key={node.id} className="flex items-center gap-0">
                     <motion.div 
                       layout
                       initial={{ scale: 0, opacity: 0, x: -50 }}
@@ -190,7 +190,7 @@ const LinkedListLevel = ({ onBack }) => {
                          <div className="absolute right-0 top-1/2 -translate-y-1/2 border-t-8 border-b-8 border-l-8 border-t-transparent border-b-transparent border-l-blue-800" />
                       </motion.div>
                     )}
-                  </React.Fragment>
+                  </div>
                 ))}
               </AnimatePresence>
               {nodes.length === 0 && <div className="text-gray-500 italic text-lg text-center w-full">List is empty (NULL)</div>}
